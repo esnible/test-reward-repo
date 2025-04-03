@@ -26,13 +26,17 @@ def haiku_reward_v2(completions: list[list[Dict[str, str]]], **kwargs) -> float:
    """
 
    # completions is a list of length 16.
-   # kwargs is a dict
+   # kwargs is a dict with keys 'prompts', 'problem', 'solution', 'answer', 'problem_type',
+   # 'question_type', 'source', 'uuid', 'is_reasoning_complete', 'generations', 'correctness_math_verify',
+   # 'correctness_llama', 'finish_reasons', and 'correctness_count'.
+
    # haiku_reward_v2_count goes up to 3
 
    global haiku_reward_v2_count
-   # print(f"@@@ completions is a {type(completions)} of length {len(completions)}, kwargs is a {type(kwargs)}, haiku_reward_v2_count={haiku_reward_v2_count}")
+   # print(f"@@@ ecs completions is a {type(completions)} of length {len(completions)}, kwargs is a {type(kwargs)}, haiku_reward_v2_count={haiku_reward_v2_count}")
    if len(completions):
-      print(f"@@@ completions[0] is a {type(completions[0])}, kwargs has keys {list(kwargs.keys())}, haiku_reward_v2_count={haiku_reward_v2_count}")
+      print(f"@@@ ecs completions[0] is a {type(completions[0])} of length {len(completions[0])}, haiku_reward_v2_count={haiku_reward_v2_count}")
+      # print(f"@@@ ecs completions[0] is a {type(completions[0])} of length {len(completions[0])}, kwargs has keys {list(kwargs.keys())}, haiku_reward_v2_count={haiku_reward_v2_count}")
    haiku_reward_v2_count = haiku_reward_v2_count + 1
 
    # Get the 'content' field of the first completion
