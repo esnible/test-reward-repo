@@ -25,8 +25,14 @@ def haiku_reward_v2(completions: list[list[Dict[str, str]]], **kwargs) -> float:
    This simulates a reward that promotes the solution that is closest to a Haiku poem.
    """
 
+   # completions is a list of length 16.
+   # kwargs is a dict
+   # haiku_reward_v2_count goes up to 3
+
    global haiku_reward_v2_count
-   print(f"@@@ completions is a {type(completions)} of length {len(completions)}, kwargs={kwargs}, a {type(kwargs)}, haiku_reward_v2_count={haiku_reward_v2_count}")
+   # print(f"@@@ completions is a {type(completions)} of length {len(completions)}, kwargs is a {type(kwargs)}, haiku_reward_v2_count={haiku_reward_v2_count}")
+   if len(completions):
+      print(f"@@@ completions[0] is a {type(completions[0])}, kwargs has keys {list(kwargs.keys())}, haiku_reward_v2_count={haiku_reward_v2_count}")
    haiku_reward_v2_count = haiku_reward_v2_count + 1
 
    # Get the 'content' field of the first completion
