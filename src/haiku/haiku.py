@@ -25,6 +25,7 @@ def haiku_reward_v2(completions: list[list[Dict[str, str]]], **kwargs) -> float:
    This simulates a reward that promotes the solution that is closest to a Haiku poem.
    """
 
+   global haiku_reward_v2_count
    print(f"@@@ completions is a {type(completions)} of length {len(completions)}, kwargs={kwargs}, a {type(kwargs)}, haiku_reward_v2_count={haiku_reward_v2_count}")
    haiku_reward_v2_count = haiku_reward_v2_count + 1
 
