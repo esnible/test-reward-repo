@@ -37,7 +37,7 @@ def haiku_reward_v2(completions: list[list[Dict[str, str]]], **kwargs) -> float:
 
    global haiku_reward_v2_count
    # print(f"@@@ ecs completions is a {type(completions)} of length {len(completions)}, kwargs is a {type(kwargs)}, haiku_reward_v2_count={haiku_reward_v2_count}")
-   kwargs_copy = {k: kwargs[k] for k in kwargs.keys() - {'Prompts', 'prompts'}}
+   kwargs_copy = {k: kwargs[k] for k in kwargs.keys() - {'Prompts', 'prompts', 'solution'}}
    # print(f"@@@ ecs completions shape is {','.join(map(myfunc, completions))}, kwargs={kwargs}, haiku_reward_v2_count={haiku_reward_v2_count}")
    print(f"@@@ ecs kwargs={kwargs_copy}, haiku_reward_v2_count={haiku_reward_v2_count}")
    # print(f"@@@ ecs completions[0] is a {type(completions[0])} of length {len(completions[0])}, kwargs has keys {list(kwargs.keys())}, haiku_reward_v2_count={haiku_reward_v2_count}")
