@@ -30,12 +30,14 @@ def haiku_reward_v2(completions: list[list[Dict[str, str]]], **kwargs) -> float:
    # 'question_type', 'source', 'uuid', 'is_reasoning_complete', 'generations', 'correctness_math_verify',
    # 'correctness_llama', 'finish_reasons', and 'correctness_count'.
 
-   # haiku_reward_v2_count goes up to 3
+   # haiku_reward_v2_count goes up to (EXPERIMENT_MAX_STEPS * 4) - 1
+
+   def myfunc(n):
+      return str(len(n))
 
    global haiku_reward_v2_count
    # print(f"@@@ ecs completions is a {type(completions)} of length {len(completions)}, kwargs is a {type(kwargs)}, haiku_reward_v2_count={haiku_reward_v2_count}")
-   if len(completions):
-      print(f"@@@ ecs completions[0] is a {type(completions[0])} of length {len(completions[0])}, haiku_reward_v2_count={haiku_reward_v2_count}")
+   print(f"@@@ ecs completions shape is {','.join(map(myfunc, completions))}, kwargs={kwargs}, haiku_reward_v2_count={haiku_reward_v2_count}")
       # print(f"@@@ ecs completions[0] is a {type(completions[0])} of length {len(completions[0])}, kwargs has keys {list(kwargs.keys())}, haiku_reward_v2_count={haiku_reward_v2_count}")
    haiku_reward_v2_count = haiku_reward_v2_count + 1
 
